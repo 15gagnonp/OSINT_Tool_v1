@@ -110,6 +110,19 @@ def query_virustotal(entry, entry_type):
 
 # Main processing loop
 def main(RATE_LIMIT):
+    print(r"""
+   
+██╗   ██╗████████╗██████╗ ███████╗ ██████╗ ██████╗ ███╗   ██╗
+██║   ██║╚══██╔══╝██╔══██╗██╔════╝██╔════╝██╔═══██╗████╗  ██║
+██║   ██║   ██║   ██████╔╝█████╗  ██║     ██║   ██║██╔██╗ ██║
+╚██╗ ██╔╝   ██║   ██╔══██╗██╔══╝  ██║     ██║   ██║██║╚██╗██║
+ ╚████╔╝    ██║   ██║  ██║███████╗╚██████╗╚██████╔╝██║ ╚████║
+  ╚═══╝     ╚═╝   ╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝
+
+═══════════════════════════════════════════════════════════════
+            VirusTotal OSINT Reconnaissance Tool
+═══════════════════════════════════════════════════════════════ 
+    """)
     # read and validate input from file
     valid_invalid = read_and_validate_input()
     # parse argurments from user input (file and type) 
