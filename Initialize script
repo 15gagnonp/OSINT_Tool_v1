@@ -1,0 +1,49 @@
+#!/bin/bash
+SCRIPT_NAME="main.py"
+ENV_NAME=".env"
+CONFIG_NAME="config.json"
+TARGET_NAME="VTRecon"
+TARGET_DIR="/Users/$USER/scripts"
+python3 -m pip install --upgrade pip
+python3 -m pip install requests
+python3 -m pip install python-dotenv
+echo "export PATH=\"/Users/$USER/Library/Python/3.9/bin:\$PATH\"" >> ~/.zshrc
+source ~/.zshrc
+if [ ! -f "${SCRIPT_NAME}" ]; then
+    echo "Error: ${SCRIPT_NAME} not found in the current directory."
+    exit 1
+fi
+if [ ! -f "${ENV_NAME}" ]; then 
+    echo "Error: ${ENV_NAME} not found in the current directory."
+    exit 1
+fi
+if [ ! -f "${CONFIG_NAME}" ]; then 
+    echo "Error: ${CONFIG_NAME} not found in the current directory."
+    exit 1
+fi
+if [ ! -d "${TARGET_DIR}" ]; then
+    echo "Creating directory ${TARGET_DIR}..."
+    mkdir -p "${TARGET_DIR}"
+fi
+echo "Moving ${SCRIPT_NAME} to ${TARGET_DIR}..."
+cp "${SCRIPT_NAME}" "${TARGET_DIR}/${TARGET_NAME}"
+echo "Making ${TARGET_NAME} executable..."
+chmod +x "${TARGET_DIR}/${TARGET_NAME}"
+
+echo "Moving ${ENV_NAME} to ${TARGET_DIR}..."
+cp "${ENV_NAME}" "${TARGET_DIR}/${ENV_NAME}"
+
+echo "Moving ${CONFIG_NAME} to ${TARGET_DIR}..."
+cp "${CONFIG_NAME}" "${TARGET_DIR}/${CONFIG_NAME}"
+
+if [[ ":$PATH:" != *":${TARGET_DIR}:"* ]]; then
+    echo "Adding ${TARGET_DIR} to PATH..."
+    echo "export PATH=\"${TARGET_DIR}:\$PATH\"" >> ~/.zshrc
+    source ~/.zshrc
+fi
+if command -v "${TARGET_NAME}" > /dev/null 2>&1; then
+    xattr -d com.apple.quarantine ~/scripts/VTRecon
+    echo "[+] Success! Run the tool by typing '${TARGET_NAME}' in the terminal."
+else
+    echo "[!] Failure :( make sure the file is named main.py and it's in the same dir"
+fi

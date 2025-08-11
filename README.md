@@ -1,6 +1,6 @@
 # VirusTotal Lookup Script
 
-## Usage
+## Usage 1
 
 1. Copy `.env.example` to `.env` and add your VirusTotal API key.
 2. Edit `config.json` to set your desired rate limit (default: 4 requests/minute).
@@ -11,10 +11,20 @@
    python main.py --input input.txt --type [ip|domain]
    ```
 
+## Usage 2
+1. Copy `.env.example` to `.env` and add your VirusTotal API key.
+2. Run the Initialize Script for Mac devices
+3. prepare a text file with one IP address or domain per line.
+4. Run the script:
+
+   ```
+   VTRecon --input input.txt --type [ip|domain]
+   ```
+
 ## Security
 
 - **Never share your API key.**
-- `.env` and `config.json` should be added to `.gitignore`.
+- `.env` should be added to `.gitignore`.
 - API keys are loaded from environment variables, not hardcoded.
 
 ## Limitations
