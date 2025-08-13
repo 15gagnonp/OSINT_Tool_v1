@@ -1,3 +1,8 @@
+####################################### 
+# Written by Preston Gagnon           #
+# Let me know if there are any issues #
+#######################################
+
 #!/usr/bin/env python3
 
 import os
