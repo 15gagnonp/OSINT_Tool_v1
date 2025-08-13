@@ -1,3 +1,7 @@
+#######################################
+# I borrowed and modified this script #
+#######################################
+
 #!/bin/bash
 SCRIPT_NAME="main.py"
 ENV_NAME=".env"
